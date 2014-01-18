@@ -7,6 +7,8 @@ Created by Sebastian Krüger on 2014-01-18.
 Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 """
 
+import sys
+
 
 class window_items(object):
 
