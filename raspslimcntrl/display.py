@@ -1,9 +1,16 @@
 
-from time import sleep
-from sys import exit
+import os
+import sys
 import unittest
-
 import font
+
+from time import sleep
+
+'''
+    Display class that handles a singleton of a display object
+    It is meant to hold a number of windows
+    Provides factory function for new windows
+'''
 
 class display(object):
     
@@ -33,9 +40,16 @@ class display(object):
         return self.windows.len()
         
     def update(self):
+        '''
+        updates the framebuffer content
+        '''
         print 'Display.update'
-        # write 
         
+    def window(self):
+        '''
+        Factory for a new Window
+        '''
+        self.windows.append()
         
     def __str__(self):
         str = "Display %dpx x %dpx\n" % (self.width, self.height)

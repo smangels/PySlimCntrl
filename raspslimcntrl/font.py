@@ -38,3 +38,26 @@ class font(object):
             str = str + " lines=%d" % (len(self.lines))
             
         return str
+
+
+'''
+    UNIT TESTS for "font" class
+'''        
+        
+class fontTests(unittest.TestCase):
+    def setUp(self):
+        self.font = font()
+        pass
+        
+    def tearDown(self):
+        del self.font
+        pass
+        
+    def test_init(self):
+        self.assertEqual(self.font.getByteArray(), None, "Message")
+        
+    def test_init2(self):
+        self.assertEqual(self.font.getFontStructure(), [0, 0, 0], "Invalid Font Structure in init")
+
+if __name__ == '__main__':
+    unittest.main()
