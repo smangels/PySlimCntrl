@@ -1,3 +1,5 @@
+import sys
+import os
 from time import sleep
 import libbcm2835._bcm2835 as soc
 

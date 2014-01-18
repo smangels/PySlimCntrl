@@ -6,13 +6,14 @@ import font
 
 from time import sleep
 
+
 '''
     Display class that handles a singleton of a display object
     It is meant to hold a number of windows
     Provides factory function for new windows
 '''
 
-class display(object):
+class Display(object):
     
     _instance = None
     def __new__(cls, *args, **kwargs):
@@ -26,6 +27,7 @@ class display(object):
         self.width = width
         self.height = height
         self.windows = []
+        self.framebuffer = None
     
     def append(self, item):
         
@@ -34,7 +36,9 @@ class display(object):
             return False
         self.windows.append(item)
         print 'display.append: window added'
-        
+    
+    def getDimensions(self):
+        return [self.width, self.height]
         
     def getNrItems(self):
         return self.windows.len()
@@ -45,7 +49,7 @@ class display(object):
         '''
         print 'Display.update'
         
-    def window(self):
+    def Window(self):
         '''
         Factory for a new Window
         '''
@@ -60,7 +64,11 @@ class display(object):
 
 class displayTests(unittest.TestCase):
     def setUp(self):
+        self.display = Display(128, 64)
         pass
+        
+    def test_initDisplay(self):
+        self.assertEqual(self.display.getDimensions(), [128, 64], "Invalid Display Size")
 
 if __name__ == '__main__':
     unittest.main()

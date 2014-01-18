@@ -11,9 +11,9 @@ import sys
 import os
 import unittest
 
-class window_items(object):
+class window_item(object):
 
-    def __init__(self, posX, posY, type='Unknown'):
+    def __init__(self, posX=0, posY=0, type='Unknown'):
         self.posX = posX
         self.posY = posY
         self.type = type
@@ -23,9 +23,12 @@ class window_items(object):
         return self.type
 
     def move(self,x,y):
+        if x < 0 or y < 0:
+            return False
         self.posX = x
         self.posY = y
         print 'item.move: move to x=', x, ' y=', y
+        return True
 
     def getPos(self):
         return [self.posX, self.posY]
@@ -40,7 +43,23 @@ class window_items(object):
 
 class graph_itemTests(unittest.TestCase):
     def setUp(self):
-        pass
+        self.item = window_item()
+        
+    def test_initGraphItem(self):
+        self.assertEqual(self.item.getType(), 'Unknown', "Invalid type")
+        
+    def test_initGetPos(self):
+        self.assertEqual(self.item.getPos(), [0, 0], "invalid position after INIT")
+        
+    def test_moveItemInvalidX(self):
+        self.assertEqual(self.item.move(-2, 0), False, "Invalid type")
+        
+    def test_moveItemInvalidY(self):
+        self.assertEqual(self.item.move(-2, -2), False, "Invalid type")
+        
+    def test_moveItemValid(self):
+        self.assertEqual(self.item.move(10, 20), True, "Invalid type")
+        self.assertEqual(self.item.getPos(), [10, 20], "Invalid new position after move")
 
 if __name__ == '__main__':
     unittest.main()
