@@ -11,13 +11,13 @@ import sys
 import os
 import unittest
 
-class window_item(object):
+class Widget(object):
 
     def __init__(self, posX=0, posY=0, type='Unknown'):
         self.posX = posX
         self.posY = posY
         self.type = type
-        print 'Item.construct: type: ',type
+        print 'Widget.construct: type: ',type
 
     def getType(self):
         return self.type
