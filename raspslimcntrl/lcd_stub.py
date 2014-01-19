@@ -13,20 +13,20 @@ import sys
 import os
 
 class Lcd_Emsystech(object):
-    
+
     def __init__(self):
-        print 'LcdEmsystech.init'
-        
+        print('LcdEmsystech.init')
+
     def backlight_on(self):
-		print('Backlight Enabled')
+		print 'Backlight Enabled'
 		return True
 
 	def backlight_off(self):
-		print('Backlight Disabled')
+	    print 'Backlight Disabled'
 		return True
 
 	def contrastSet(self, contrast):
-		print('LCD.contrast: old= ', self.contrast, ' new=', contrast)
+		print 'LCD.contrast: old= ', self.contrast, ' new=', contrast
         return True
 
 	def lcdDrawLine(self, x0, y0, len):
@@ -40,6 +40,9 @@ class Lcd_Emsystech(object):
 	def lcdPrintTxt(self, x, y, txt):
 		print('lcd.print: x=', x, ' y=', y, ' txt=', txt)
 		return True
+		
+	def lcdClear(self):
+	    print('lcd.clear')
 
 def main():
     pass

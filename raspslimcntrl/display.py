@@ -1,12 +1,18 @@
 
 import os
 import sys
+import socket
 import unittest
 import font
 import math
 
 from time import sleep
-from widget import Widget
+from window import Window
+
+if socket.gethostname != 'alarmpi':
+    import lcd_stub
+else:
+    import lcd
 
 
 '''
@@ -31,18 +37,11 @@ class Display(object):
         self.widgets = []
         self.framebuffer = None
     
-    def append(self, item):
-        if not item.type == 'Window':
-            print 'display.append: Invalid type', item.type
-            return False
-        self.widgets.append(item)
-        print 'display.append: window added'
-    
     def getDimensions(self):
         return [self.width, self.height]
         
     def getNrItems(self):
-        return self.widgets.len()
+        return len(self.widgets)
         
     def update(self):
         '''
@@ -50,12 +49,13 @@ class Display(object):
         '''
         print 'Display.update'
         
-    def CreateWindow(self):
+    def Window(self, x=0, y=0, w=0, h=0):
         '''
         Factory for a new Window
         '''
-        self.windows.append(0)
-        return True
+        w = Window(x, y, w, h)
+        self.widgets.append(w)
+        return w
         
     def posToIndex(self, x, y):
         if x < 0 or y < 0 or x > (self.width - 1) or y > (self.height - 1):
@@ -79,9 +79,14 @@ class displayTests(unittest.TestCase):
 
 class GetDimensionTestCase(displayTests):
     def runTest(self):
+        w1 = None
         self.assertEqual(self.disp.getDimensions(), [128, 64], "Invalid Display Size")
         self.assertEqual(self.disp.posToIndex(-1, 2), [0, 0], "Expected 0,0")
         self.assertEqual(self.disp.posToIndex(7, 2), [0, 2], "Expected 0,0")
+        self.assertEqual(self.disp.getNrItems(), 0, "Expected")
+        w1 = self.disp.Window(0, 0, 20, 40)
+        w1.move(10,10)
+        self.assertNotEqual(self.disp.getNrItems(), 0, "Expected")
 
 if __name__ == '__main__':
     unittest.main()

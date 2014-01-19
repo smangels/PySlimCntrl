@@ -9,10 +9,11 @@ Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 
 import sys
 import os
-
+import display
 
 def main():
-    pass
+    
+    disp = Display(128, 64)
 
 
 if __name__ == '__main__':

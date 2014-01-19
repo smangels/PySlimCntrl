@@ -19,7 +19,7 @@ class Image(Widget):
         print 'Picture: Call ITEM base class', width, height
         Widget.__init__(self, posX, posY, 'Image')
         self.width = width
-        self.height = height        
+        self.height = height
 
 class imageTests(unittest.TestCase):
     def setUp(self):
