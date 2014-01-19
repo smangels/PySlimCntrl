@@ -13,7 +13,7 @@ import display
 
 def main():
     
-    disp = Display(128, 64)
+    disp = Display(64, 128)
 
 
 if __name__ == '__main__':
