@@ -11,11 +11,11 @@ import sys
 import os
 import unittest
 
-from window_items import window_item
+from widget import Widget
 
-class TextBox(window_item):
+class TextBox(Widget):
     def __init__(self, posX=0, posY=0, font=None):
-        window_item.__init__(self, posX, posY, 'TextBox')
+        Widget.__init__(self, posX, posY, 'TextBox')
         self.font = font
         self.text = ""
         
