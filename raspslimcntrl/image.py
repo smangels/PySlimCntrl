@@ -11,24 +11,23 @@ import sys
 import os
 import unittest
 
-from window_items import window_item
+from widget import Widget
 
-class Picture(window_item):
+class Image(Widget):
     
     def __init__(self, posX=0, posY=0, width=0, height=0):
         print 'Picture: Call ITEM base class', width, height
-        window_item.__init__(self, posX, posY, 'Picture')
+        Widget.__init__(self, posX, posY, 'Image')
         self.width = width
-        self.height = height
-        
+        self.height = height        
 
 class imageTests(unittest.TestCase):
     def setUp(self):
-        self.pic = Picture(0, 0, 0, 0)
+        self.pic = Image(0, 0, 0, 0)
         pass
         
     def test_init(self):
-        self.assertEqual(self.pic.getType(), 'Picture', "Invalid type")
+        self.assertEqual(self.pic.getType(), 'Image', "Invalid type")
         
         
 
