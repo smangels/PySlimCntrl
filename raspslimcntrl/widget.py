@@ -43,7 +43,7 @@ class Widget(object):
 
 class graph_itemTests(unittest.TestCase):
     def setUp(self):
-        self.item = window_item()
+        self.item = Widget()
         
     def test_initGraphItem(self):
         self.assertEqual(self.item.getType(), 'Unknown', "Invalid type")
