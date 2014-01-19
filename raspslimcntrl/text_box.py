@@ -13,7 +13,7 @@ import unittest
 
 from window_items import window_item
 
-class text_box(window_item):
+class TextBox(window_item):
     def __init__(self, posX=0, posY=0, font=None):
         window_item.__init__(self, posX, posY, 'TextBox')
         self.font = font
@@ -28,9 +28,9 @@ class text_box(window_item):
 
 
 
-class text_boxTests(unittest.TestCase):
+class TextBoxTests(unittest.TestCase):
     def setUp(self):
-        self.tb = text_box()
+        self.tb = TextBox()
         pass
 
     def test_InitGetText(self):
