@@ -17,7 +17,7 @@ class Widget(object):
         self.posX = posX
         self.posY = posY
         self.type = type
-        print 'Widget.construct: type: ',type
+        print 'Widget.construct: type: %s, %d x %d' % (type, posX, posY)
 
     def getType(self):
         return self.type

@@ -11,12 +11,12 @@ import sys
 import os
 import unittest
 
-from window_items import window_item
+from widget import Widget
 
 
-class progress_bar(window_item):
+class progress_bar(Widget):
 	def __init__(self, posx=0, posy=0, height=0, len=0):
-	    window_item.__init__(self, posx, posy, 'ProgressBar')
+	    Widget.__init__(self, posx, posy, 'ProgressBar')
 	    self.elapsed = 0
 	    self.height = 0
 	    self.len = 0

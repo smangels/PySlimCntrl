@@ -11,20 +11,20 @@ import sys
 import os
 import unittest
 
-from window_items import window_item
+from widget import Widget
 import progress_bar
 
-class Window(window_item):
+class Window(Widget):
 
     def __init__(self, posX=0, posY=0, width=0, height=0):
         print "Construct a new Window, %d:%d:%d:%d" % (posX, posY, width, height)
-        window_item.__init__(self, posX, posY, 'Window')
+        Widget.__init__(self, posX, posY, 'Window')
         self.width = width
         self.height = height
-        self.objects = []
+        self.widgets = []
 
     def append(self, item):
-        self.objects.append(item)
+        self.widgets.append(item)
         print 'Window.append: type=', item.type, ' new len', len(self.objects)
         
     def TextBox(self):
